@@ -49,13 +49,13 @@ class _HomePageState extends State<HomePage> {
                       AssetImage(
                         imagePath('ic_post'),
                       ),
-                      size: 20,
+                      size: 24,
                       color: Colors.black,
                     ),
                   ),
                 ),
                 const HorizontalSpacing(
-                  width: 8,
+                  width: 12,
                 ),
                 SizedBox(
                   width: 28,
@@ -67,13 +67,13 @@ class _HomePageState extends State<HomePage> {
                       AssetImage(
                         imagePath('ic_like'),
                       ),
-                      size: 20,
+                      size: 24,
                       color: Colors.black,
                     ),
                   ),
                 ),
                 const HorizontalSpacing(
-                  width: 8,
+                  width: 12,
                 ),
                 SizedBox(
                   width: 28,
@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                       AssetImage(
                         imagePath('ic_messenger'),
                       ),
-                      size: 20,
+                      size: 24,
                       color: Colors.black,
                     ),
                   ),

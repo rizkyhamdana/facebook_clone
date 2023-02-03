@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/features/menu/home/home_page.dart';
 import 'package:instagram_clone/features/menu/profile/profile_page.dart';
-import 'package:instagram_clone/util/image_path.dart';
 
 class BaseMenuPage extends StatefulWidget {
   static const String router = '/base_menu_page';
@@ -11,118 +10,102 @@ class BaseMenuPage extends StatefulWidget {
   State<BaseMenuPage> createState() => _BaseMenuPageState();
 }
 
-class _BaseMenuPageState extends State<BaseMenuPage> {
-  int _currentIndex = 0;
-  late PageController _pageController;
+class _BaseMenuPageState extends State<BaseMenuPage>
+    with TickerProviderStateMixin {
+  late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-
-    _pageController = PageController();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
+    _tabController = TabController(length: 6, vsync: this);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox.expand(
-        child: PageView(
-          controller: _pageController,
-          physics: const NeverScrollableScrollPhysics(),
-          onPageChanged: (index) {
-            setState(() => _currentIndex = index);
-          },
-          children: const <Widget>[
-            HomePage(),
-            HomePage(),
-            HomePage(),
-            HomePage(),
-            ProfilePage()
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: _tabController.index == 0
+            ? SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: const Text(
+                  'facebook',
+                  style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.left,
+                ),
+              )
+            : null,
+        toolbarHeight: _tabController.index == 0 ? null : 0,
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: <Widget>[
+            Tab(
+              icon: Icon(
+                Icons.home,
+                color: _tabController.index == 0 ? Colors.blue : Colors.grey,
+              ),
+            ),
+            Tab(
+              icon: Icon(
+                Icons.video_library_outlined,
+                color: _tabController.index == 1 ? Colors.blue : Colors.grey,
+              ),
+            ),
+            Tab(
+              icon: Icon(
+                Icons.store_outlined,
+                color: _tabController.index == 2 ? Colors.blue : Colors.grey,
+              ),
+            ),
+            Tab(
+              icon: Icon(
+                Icons.person_outline_rounded,
+                color: _tabController.index == 3 ? Colors.blue : Colors.grey,
+              ),
+            ),
+            Tab(
+              icon: Icon(
+                Icons.notifications_outlined,
+                color: _tabController.index == 4 ? Colors.blue : Colors.grey,
+              ),
+            ),
+            Tab(
+              icon: Icon(
+                Icons.brightness_5_sharp,
+                color: _tabController.index == 5 ? Colors.blue : Colors.grey,
+              ),
+            ),
           ],
+          onTap: (value) {
+            setState(() {
+              _tabController.index = value;
+            });
+          },
         ),
       ),
-      bottomNavigationBar: Theme(
-        data: Theme.of(context).copyWith(
-          canvasColor: Colors.white,
-        ),
-        child: Container(
-          decoration: const BoxDecoration(
-            border: Border(top: BorderSide(color: Colors.grey, width: 0.2)),
+      body: TabBarView(
+        controller: _tabController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: const <Widget>[
+          HomePage(),
+          Center(
+            child: Text("It's rainy here"),
           ),
-          child: BottomNavigationBar(
-            currentIndex: _currentIndex,
-            onTap: (index) {
-              setState(() => _currentIndex = index);
-              _pageController.jumpToPage(index);
-            },
-            type: BottomNavigationBarType.fixed,
-            iconSize: 24,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            items: [
-              BottomNavigationBarItem(
-                icon: ImageIcon(
-                  AssetImage(
-                    imagePath('ic_home'),
-                  ),
-                  color: Colors.black,
-                ),
-                label: '',
-                activeIcon: ImageIcon(
-                  AssetImage(
-                    imagePath('ic_home_selected'),
-                  ),
-                  color: Colors.black,
-                ),
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(
-                  AssetImage(
-                    imagePath('ic_search'),
-                  ),
-                  color: Colors.black,
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(
-                  AssetImage(
-                    imagePath('ic_reels'),
-                  ),
-                  color: Colors.black,
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(
-                  AssetImage(
-                    imagePath('ic_shop'),
-                  ),
-                  color: Colors.black,
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: SizedBox(
-                  width: 24,
-                  height: 24,
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage(
-                      imagePathJpeg('ic_my_profile'),
-                    ),
-                  ),
-                ),
-                label: '',
-              ),
-            ],
+          Center(
+            child: Text("It's rainy here"),
           ),
-        ),
+          ProfilePage(),
+          Center(
+            child: Text("It's rainy here"),
+          ),
+          Center(
+            child: Text("It's rainy here"),
+          ),
+        ],
       ),
     );
   }

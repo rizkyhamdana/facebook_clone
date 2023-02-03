@@ -63,7 +63,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       AssetImage(
                         imagePath('ic_post'),
                       ),
-                      size: 20,
+                      size: 24,
                       color: Colors.black,
                     ),
                   ),
