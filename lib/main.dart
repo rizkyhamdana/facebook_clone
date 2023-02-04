@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:instagram_clone/util/router.dart';
+import 'package:facebook_clone/util/router.dart';
 
 void main() {
   runApp(const MyApp());

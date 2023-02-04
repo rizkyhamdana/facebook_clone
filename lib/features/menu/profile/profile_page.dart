@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:instagram_clone/util/image_path.dart';
-import 'package:instagram_clone/util/spacing.dart';
+import 'package:facebook_clone/util/image_path.dart';
+import 'package:facebook_clone/util/spacing.dart';
 
 class ProfilePage extends StatefulWidget {
   static const String route = '/profile_page';

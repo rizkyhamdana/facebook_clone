@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/features/menu/base_menu_page.dart';
-import 'package:instagram_clone/features/menu/home/home_page.dart';
+import 'package:facebook_clone/features/menu/base_menu_page.dart';
+import 'package:facebook_clone/features/menu/home/home_page.dart';
 
 Route navigateToHomePage() {
   return MaterialPageRoute(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/data/model/posts.dart';
-import 'package:instagram_clone/data/model/stories.dart';
-import 'package:instagram_clone/util/image_path.dart';
-import 'package:instagram_clone/util/spacing.dart';
+import 'package:facebook_clone/data/model/posts.dart';
+import 'package:facebook_clone/data/model/stories.dart';
+import 'package:facebook_clone/util/image_path.dart';
+import 'package:facebook_clone/util/spacing.dart';
 
 class HomePage extends StatefulWidget {
   static const String route = '/home_page';

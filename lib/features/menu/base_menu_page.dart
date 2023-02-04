@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/features/menu/home/home_page.dart';
-import 'package:instagram_clone/features/menu/profile/profile_page.dart';
-import 'package:instagram_clone/util/image_path.dart';
-import 'package:instagram_clone/util/spacing.dart';
+import 'package:facebook_clone/features/menu/home/home_page.dart';
+import 'package:facebook_clone/features/menu/profile/profile_page.dart';
+import 'package:facebook_clone/util/image_path.dart';
+import 'package:facebook_clone/util/spacing.dart';
 
 class BaseMenuPage extends StatefulWidget {
   static const String router = '/base_menu_page';
