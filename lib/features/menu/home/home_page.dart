@@ -26,6 +26,15 @@ class _HomePageState extends State<HomePage> {
             createPostSection(),
             const VerticalSpacing(),
             storiesSection(),
+            const VerticalSpacing(),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: listPosts.length,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (BuildContext context, int index) {
+                return postSection(listPosts[index]);
+              },
+            ),
           ],
         ),
       ),
@@ -215,5 +224,214 @@ class _HomePageState extends State<HomePage> {
         ),
       );
     }
+  }
+
+  Widget postSection(Posts post) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      margin: const EdgeInsets.only(bottom: 16),
+      color: Colors.white,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: AssetImage(
+                            imagePathJpg(post.avatarPath),
+                          ),
+                        ),
+                        const HorizontalSpacing(
+                          width: 8,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              post.name,
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            const VerticalSpacing(
+                              height: 4,
+                            ),
+                            Row(
+                              children: const [
+                                Text(
+                                  '1d',
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                                HorizontalSpacing(
+                                  width: 4,
+                                ),
+                                Icon(
+                                  Icons.group,
+                                  size: 16,
+                                  color: Colors.grey,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(100)),
+                          child: MaterialButton(
+                            padding: EdgeInsets.zero,
+                            shape: const CircleBorder(),
+                            onPressed: () {},
+                            child: const Icon(
+                              Icons.more_horiz,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(100)),
+                          child: MaterialButton(
+                            padding: EdgeInsets.zero,
+                            shape: const CircleBorder(),
+                            onPressed: () {},
+                            child: const Icon(
+                              Icons.close,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const VerticalSpacing(),
+                Text(post.caption)
+              ],
+            ),
+          ),
+          Image.asset(
+            imagePath(post.imagePath),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Icon(
+                      Icons.thumb_up_rounded,
+                      size: 16,
+                      color: Colors.blue,
+                    ),
+                    const HorizontalSpacing(
+                      width: 4,
+                    ),
+                    Text(
+                      post.likes.toString(),
+                    ),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: const [
+                    Text('10'),
+                    HorizontalSpacing(
+                      width: 4,
+                    ),
+                    Text('comments'),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(left: 16, right: 16),
+            width: MediaQuery.of(context).size.width,
+            height: 0.5,
+            color: Colors.grey,
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Expanded(
+                child: MaterialButton(
+                  padding: EdgeInsets.zero,
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        Icons.thumb_up_outlined,
+                        size: 20,
+                      ),
+                      HorizontalSpacing(
+                        width: 4,
+                      ),
+                      Text('Like')
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                child: MaterialButton(
+                  padding: EdgeInsets.zero,
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        Icons.mode_comment_outlined,
+                        size: 20,
+                      ),
+                      HorizontalSpacing(
+                        width: 4,
+                      ),
+                      Text('Comment')
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                child: MaterialButton(
+                  padding: EdgeInsets.zero,
+                  onPressed: () {},
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        Icons.share_outlined,
+                        size: 20,
+                      ),
+                      HorizontalSpacing(
+                        width: 4,
+                      ),
+                      Text('Share')
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

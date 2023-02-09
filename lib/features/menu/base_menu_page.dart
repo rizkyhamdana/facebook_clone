@@ -1,6 +1,6 @@
+import 'package:facebook_clone/features/menu/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:facebook_clone/features/menu/home/home_page.dart';
-import 'package:facebook_clone/features/menu/profile/profile_page.dart';
 import 'package:facebook_clone/util/image_path.dart';
 import 'package:facebook_clone/util/spacing.dart';
 
@@ -16,8 +16,6 @@ class BaseMenuPage extends StatefulWidget {
 class _BaseMenuPageState extends State<BaseMenuPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-
-  Widget? topNavigation;
 
   @override
   void initState() {
@@ -156,25 +154,30 @@ class _BaseMenuPageState extends State<BaseMenuPage>
           },
         ),
       ),
-      body: TabBarView(
-        controller: _tabController,
-        physics: const BouncingScrollPhysics(),
-        children: const <Widget>[
-          HomePage(),
-          Center(
-            child: Text("It's rainy here"),
-          ),
-          Center(
-            child: Text("It's rainy here"),
-          ),
-          ProfilePage(),
-          Center(
-            child: Text("It's rainy here"),
-          ),
-          Center(
-            child: Text("It's rainy here"),
-          ),
-        ],
+      body: Container(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).padding.bottom,
+        ),
+        child: TabBarView(
+          controller: _tabController,
+          physics: const BouncingScrollPhysics(),
+          children: const <Widget>[
+            HomePage(),
+            Center(
+              child: Text("This is Watch Page"),
+            ),
+            Center(
+              child: Text("This is Marketplace Page"),
+            ),
+            ProfilePage(),
+            Center(
+              child: Text("This is Notification Page"),
+            ),
+            Center(
+              child: Text("This is Setting Page"),
+            ),
+          ],
+        ),
       ),
     );
   }
