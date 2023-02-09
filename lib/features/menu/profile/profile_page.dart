@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:facebook_clone/util/image_path.dart';
 import 'package:facebook_clone/util/spacing.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProfilePage extends StatefulWidget {
   static const String route = '/profile_page';
@@ -15,80 +15,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-          statusBarIconBrightness: Brightness.dark,
-          statusBarBrightness: Brightness.dark,
-        ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Row(
-              children: [
-                const Text(
-                  'rizky_hamdana',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(
-                  width: 28,
-                  height: 28,
-                  child: MaterialButton(
-                    padding: const EdgeInsets.all(2),
-                    onPressed: () {},
-                    child: const Icon(
-                      Icons.keyboard_arrow_down,
-                      size: 24,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: 28,
-                  height: 28,
-                  child: MaterialButton(
-                    padding: const EdgeInsets.all(2),
-                    onPressed: () {},
-                    child: ImageIcon(
-                      AssetImage(
-                        imagePath('ic_post'),
-                      ),
-                      size: 24,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                const HorizontalSpacing(
-                  width: 8,
-                ),
-                SizedBox(
-                  width: 28,
-                  height: 28,
-                  child: MaterialButton(
-                    padding: const EdgeInsets.all(2),
-                    onPressed: () {},
-                    child: const Icon(
-                      Icons.menu,
-                      size: 24,
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blueGrey.shade100,
       body: Container(
         margin: EdgeInsets.zero,
         width: MediaQuery.of(context).size.width,
@@ -96,206 +23,446 @@ class _ProfilePageState extends State<ProfilePage> {
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
-                width: MediaQuery.of(context).size.width,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                color: Colors.white,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(4),
-                      width: 76,
-                      height: 76,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(100),
-                        border: Border.all(color: Colors.grey),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              const Text(
+                                'Rizky Hamdana',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              SizedBox(
+                                width: 28,
+                                height: 28,
+                                child: MaterialButton(
+                                  padding: const EdgeInsets.all(2),
+                                  onPressed: () {},
+                                  child: const Icon(
+                                    Icons.keyboard_arrow_down,
+                                    size: 24,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 36,
+                                height: 36,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey.shade100,
+                                    borderRadius: BorderRadius.circular(100)),
+                                child: MaterialButton(
+                                  padding: EdgeInsets.zero,
+                                  shape: const CircleBorder(),
+                                  onPressed: () {},
+                                  child: const Icon(
+                                    Icons.person,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage(
-                          imagePathJpeg('ic_my_profile'),
-                        ),
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: 200,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            top: 0,
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 160,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                      imagePathJpg('fb_cover'),
+                                    ),
+                                    fit: BoxFit.cover),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 0,
+                            left: 16,
+                            child: Container(
+                              padding: const EdgeInsets.all(4),
+                              width: 120,
+                              height: 120,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(100),
+                                border: Border.all(color: Colors.grey),
+                              ),
+                              child: CircleAvatar(
+                                backgroundImage: AssetImage(
+                                  imagePathJpeg('ic_my_profile'),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 0,
+                            left: 120,
+                            child: Container(
+                              width: 36,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.shade100,
+                                  borderRadius: BorderRadius.circular(100)),
+                              child: MaterialButton(
+                                padding: EdgeInsets.zero,
+                                shape: const CircleBorder(),
+                                onPressed: () {},
+                                child: const Icon(
+                                  Icons.camera_alt,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 56,
+                            right: 16,
+                            child: Container(
+                              width: 36,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey.shade100,
+                                  borderRadius: BorderRadius.circular(100)),
+                              child: MaterialButton(
+                                padding: EdgeInsets.zero,
+                                shape: const CircleBorder(),
+                                onPressed: () {},
+                                child: const Icon(
+                                  Icons.camera_alt,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 100,
+                            right: 16,
+                            child: Container(
+                              width: 36,
+                              height: 36,
+                              decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(100)),
+                              child: MaterialButton(
+                                padding: EdgeInsets.zero,
+                                shape: const CircleBorder(),
+                                onPressed: () {},
+                                child: const Icon(
+                                  Icons.emoji_emotions,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: const [
-                        Text(
-                          '1',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                        Text(
-                          'Posts',
-                          style: TextStyle(fontSize: 13),
-                        ),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Rizky Hamdana',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const VerticalSpacing(),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.blue,
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: MaterialButton(
+                                    padding: EdgeInsets.zero,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    onPressed: () {},
+                                    child: Center(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: const [
+                                          Icon(
+                                            Icons.add_circle,
+                                            color: Colors.white,
+                                          ),
+                                          HorizontalSpacing(
+                                            width: 4,
+                                          ),
+                                          Text(
+                                            'Add to story',
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const HorizontalSpacing(
+                                width: 8,
+                              ),
+                              Expanded(
+                                child: Container(
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.shade100,
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: MaterialButton(
+                                    padding: EdgeInsets.zero,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    onPressed: () {},
+                                    child: Center(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: const [
+                                          Icon(
+                                            Icons.edit,
+                                          ),
+                                          HorizontalSpacing(
+                                            width: 4,
+                                          ),
+                                          Text(
+                                            'Edit Profile',
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const HorizontalSpacing(
+                                width: 8,
+                              ),
+                              Container(
+                                width: 36,
+                                height: 36,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey.shade100,
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: MaterialButton(
+                                  padding: EdgeInsets.zero,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  onPressed: () {},
+                                  child: const Icon(
+                                    Icons.more_horiz,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: const [
-                        Text(
-                          '1,884',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                        Text(
-                          'Followers',
-                          style: TextStyle(fontSize: 13),
-                        ),
-                      ],
+                  ],
+                ),
+              ),
+              const VerticalSpacing(),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.only(top: 16, bottom: 16),
+                color: Colors.white,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0, right: 16),
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 40,
+                            decoration: BoxDecoration(
+                                color: Colors.blue.shade50,
+                                borderRadius: BorderRadius.circular(24)),
+                            child: MaterialButton(
+                              padding: EdgeInsets.zero,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(24),
+                              ),
+                              onPressed: () {},
+                              child: const Text(
+                                'Posts',
+                                style: TextStyle(color: Colors.blue),
+                              ),
+                            ),
+                          ),
+                          const HorizontalSpacing(
+                            width: 8,
+                          ),
+                          Container(
+                            height: 40,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(24)),
+                            child: MaterialButton(
+                              padding: EdgeInsets.zero,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(24),
+                              ),
+                              onPressed: () {},
+                              child: const Text(
+                                'Reels',
+                                style: TextStyle(color: Colors.blueGrey),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: const [
-                        Text(
-                          '949',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                        Text(
-                          'Following',
-                          style: TextStyle(fontSize: 13),
-                        ),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16, bottom: 16),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 0.2,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 16, right: 16, bottom: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Details',
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const VerticalSpacing(),
+                          Row(
+                            children: const [
+                              Icon(
+                                Icons.access_time_filled,
+                                color: Colors.blueGrey,
+                              ),
+                              HorizontalSpacing(
+                                width: 8,
+                              ),
+                              Text(
+                                'Joined on July 2013',
+                              ),
+                            ],
+                          ),
+                          const VerticalSpacing(),
+                          Row(
+                            children: const [
+                              Icon(
+                                FontAwesomeIcons.instagram,
+                                color: Colors.blueGrey,
+                              ),
+                              HorizontalSpacing(
+                                width: 8,
+                              ),
+                              Text(
+                                'rizky_hamdana',
+                              ),
+                            ],
+                          ),
+                          const VerticalSpacing(),
+                          Row(
+                            children: const [
+                              Icon(
+                                Icons.link,
+                                color: Colors.blueGrey,
+                              ),
+                              HorizontalSpacing(
+                                width: 8,
+                              ),
+                              Text(
+                                'rizkyhamdana.blogspot.com',
+                              ),
+                            ],
+                          ),
+                          const VerticalSpacing(),
+                          Row(
+                            children: const [
+                              Icon(
+                                Icons.more_horiz,
+                                color: Colors.blueGrey,
+                              ),
+                              HorizontalSpacing(
+                                width: 8,
+                              ),
+                              Text(
+                                'See your About info',
+                              ),
+                            ],
+                          ),
+                          const VerticalSpacing(),
+                          Container(
+                            height: 40,
+                            decoration: BoxDecoration(
+                                color: Colors.blue.shade50,
+                                borderRadius: BorderRadius.circular(8)),
+                            child: MaterialButton(
+                              padding: EdgeInsets.zero,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              onPressed: () {},
+                              child: const Center(
+                                child: Text(
+                                  'Edit Public Details',
+                                  style: TextStyle(color: Colors.blue),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 ),
-              ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
-                child: const Text(
-                  'Rizky Hamdana',
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
-                child: RichText(
-                  text: const TextSpan(
-                    text:
-                        '•\nGoogle Certified AAD\nMobile Developer at PAC\nExternal Reviewer ',
-                    style: TextStyle(fontSize: 13, color: Colors.black),
-                    children: [
-                      TextSpan(
-                        text: '@dicoding\n',
-                        style: TextStyle(fontSize: 13, color: Colors.blue),
-                      ),
-                      TextSpan(
-                        text: '•\n',
-                        style: TextStyle(fontSize: 13),
-                      ),
-                      TextSpan(
-                        text: 'rizkyhamdana.my.id/',
-                        style: TextStyle(fontSize: 13, color: Colors.blue),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const VerticalSpacing(
-                height: 8,
-              ),
-              Container(
-                margin: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                padding: const EdgeInsets.all(8),
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(4),
-                  border: Border.all(color: Colors.grey, width: 0.5),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 0,
-                      blurRadius: 0,
-                      offset: const Offset(0, 1), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: const Text(
-                  'Edit profile',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
-                ),
-              ),
-              Row(
-                children: [
-                  Column(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(16, 16, 8, 0),
-                        padding: const EdgeInsets.all(4),
-                        width: 64,
-                        height: 64,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(100),
-                          border: Border.all(color: Colors.grey),
-                        ),
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage(
-                            imagePathJpeg('ic_my_profile'),
-                          ),
-                        ),
-                      ),
-                      const VerticalSpacing(
-                        height: 4,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(left: 8),
-                        width: 80,
-                        child: const Text(
-                          'Certificate',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 12, color: Colors.grey),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.fromLTRB(8, 16, 8, 0),
-                        padding: const EdgeInsets.all(4),
-                        width: 64,
-                        height: 64,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(100),
-                          border: Border.all(color: Colors.grey),
-                        ),
-                        child: const CircleAvatar(
-                          backgroundColor: Colors.white,
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.black,
-                            size: 32,
-                          ),
-                        ),
-                      ),
-                      const VerticalSpacing(
-                        height: 4,
-                      ),
-                      const SizedBox(
-                        width: 80,
-                        child: Text(
-                          'New',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 12, color: Colors.grey),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-              ),
+              )
             ],
           ),
         ),
