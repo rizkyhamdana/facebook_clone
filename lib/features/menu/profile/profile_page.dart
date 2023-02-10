@@ -27,6 +27,8 @@ class _ProfilePageState extends State<ProfilePage> {
               profileSection(),
               const VerticalSpacing(),
               detailsProfileSection(),
+              const VerticalSpacing(),
+              createPostSection(),
             ],
           ),
         ),
@@ -317,7 +319,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget detailsProfileSection() {
     return Container(
       width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.only(top: 16, bottom: 16),
+      padding: const EdgeInsets.only(top: 16),
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -553,6 +555,193 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget createPostSection() {
+    return Container(
+      color: Colors.white,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Text(
+                      'Posts',
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'Filters',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          MaterialButton(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+            onPressed: () {},
+            child: Row(
+              children: [
+                CircleAvatar(
+                  backgroundImage: AssetImage(
+                    imagePathJpeg('ic_my_logo'),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadiusDirectional.circular(24),
+                    ),
+                    width: MediaQuery.of(context).size.width,
+                    child: const Text(
+                      "What's on your mind?",
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                ),
+                const HorizontalSpacing(
+                  width: 8,
+                ),
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(100)),
+                  child: MaterialButton(
+                    padding: const EdgeInsets.all(8),
+                    shape: const CircleBorder(),
+                    onPressed: () {},
+                    child: const Icon(
+                      Icons.panorama,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              color: Colors.blueGrey.withOpacity(0.05),
+              border: const Border(
+                top: BorderSide(width: 0.1, color: Colors.blueGrey),
+                bottom: BorderSide(width: 0.1, color: Colors.blueGrey),
+              ),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(24)),
+                  child: MaterialButton(
+                    padding: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                        side: const BorderSide(
+                            width: 0.1, color: Colors.blueGrey)),
+                    onPressed: () {},
+                    child: Row(
+                      children: const [
+                        Icon(
+                          Icons.movie,
+                          color: Colors.red,
+                        ),
+                        HorizontalSpacing(
+                          width: 4,
+                        ),
+                        Text(
+                          'Reel',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const HorizontalSpacing(
+                  width: 8,
+                ),
+                Container(
+                  height: 40,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(24)),
+                  child: MaterialButton(
+                    padding: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                        side: const BorderSide(
+                            width: 0.1, color: Colors.blueGrey)),
+                    onPressed: () {},
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: const [
+                        Icon(
+                          Icons.emergency_recording_rounded,
+                          color: Colors.red,
+                        ),
+                        HorizontalSpacing(
+                          width: 4,
+                        ),
+                        Text(
+                          'Live',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const VerticalSpacing(),
+          Container(
+            margin: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+            height: 40,
+            decoration: BoxDecoration(
+                color: Colors.blueGrey.shade50,
+                borderRadius: BorderRadius.circular(8)),
+            child: MaterialButton(
+              padding: EdgeInsets.zero,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              onPressed: () {},
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(
+                    Icons.chat_bubble_outline,
+                    color: Colors.black,
+                  ),
+                  HorizontalSpacing(
+                    width: 4,
+                  ),
+                  Text(
+                    'Manage Posts',
+                  ),
+                ],
+              ),
             ),
           ),
         ],
