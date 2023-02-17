@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:facebook_clone/features/test/test_page.dart';
 import 'package:flutter/material.dart';
 import 'package:facebook_clone/features/menu/base_menu_page.dart';
 import 'package:facebook_clone/features/menu/home/home_page.dart';
@@ -28,8 +29,18 @@ class AppRouter {
         return navigateToBaseMenuPage();
       case HomePage.route:
         return navigateToHomePage();
+      case TestPage.route:
+        return navigateToTestPage();
       default:
         return navigateToBaseMenuPage();
     }
+  }
+
+  Route navigateToTestPage() {
+    return MaterialPageRoute(
+      builder: (BuildContext context) {
+        return const TestPage();
+      },
+    );
   }
 }

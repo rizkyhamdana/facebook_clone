@@ -1,4 +1,5 @@
 import 'package:facebook_clone/features/menu/profile/profile_page.dart';
+import 'package:facebook_clone/features/test/test_page.dart';
 import 'package:flutter/material.dart';
 import 'package:facebook_clone/features/menu/home/home_page.dart';
 import 'package:facebook_clone/util/image_path.dart';
@@ -59,7 +60,10 @@ class _BaseMenuPageState extends State<BaseMenuPage>
                           child: MaterialButton(
                             padding: EdgeInsets.zero,
                             shape: const CircleBorder(),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context, TestPage.route,
+                                  arguments: []);
+                            },
                             child: const Icon(
                               Icons.add,
                               color: Colors.black,

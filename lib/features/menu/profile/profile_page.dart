@@ -258,7 +258,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Container(
                         height: 40,
                         decoration: BoxDecoration(
-                            color: Colors.grey.shade100,
+                            color: Colors.blueGrey.shade50,
                             borderRadius: BorderRadius.circular(8)),
                         child: MaterialButton(
                           padding: EdgeInsets.zero,
@@ -292,7 +292,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       width: 36,
                       height: 36,
                       decoration: BoxDecoration(
-                          color: Colors.grey.shade100,
+                          color: Colors.blueGrey.shade50,
                           borderRadius: BorderRadius.circular(8)),
                       child: MaterialButton(
                         padding: EdgeInsets.zero,
